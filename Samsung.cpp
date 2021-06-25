@@ -1,16 +1,20 @@
-// Samsung.cpp : Defines the entry point for the application.
+﻿// Samsung.cpp : Defines the entry point for the application.
 // Created by Ivan Martsilenko
 
 #include <windows.h>
 #include <gdiplus.h>
 #include "BMP.h" 
+
 #pragma comment(lib,"gdiplus.lib")
 using namespace Gdiplus;
 
-#include <time.h>
-#include <fstream>
+#include <time.h>  // need for program work time measurement 
+#include <fstream> // 
+
+
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
 {
@@ -61,11 +65,12 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 		ShowWindow(hwnd, nCmdShow);
 		for (int t = 0; t < wave.get_t_end(); ++t)
 		{
-			bmp.fill_wave(wave, t, canonic);
+
+			bmp.process_rows(wave, t, canonic);
 			bmp.write(filename);
 			InvalidateRect(hwnd, NULL, TRUE);
 			UpdateWindow(hwnd);
-			//RedrawWindow(hwnd, NULL, NULL, RDW_INTERNALPAINT);
+
 		}
 		clock_t end = clock();
 		seconds = (double)(end - start) ;
@@ -124,3 +129,4 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
+

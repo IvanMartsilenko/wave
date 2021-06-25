@@ -1,4 +1,4 @@
-The time: 4285 seconds * clocs_per_sec
+The time: 4705 seconds * clocs_per_sec
 Image: sample_1.bmp
 Wave settings: 
 

@@ -1,10 +1,12 @@
-#pragma once
+﻿#pragma once
 
 
 #include <vector>
 #include <fstream>
 #include <iostream>
 #include "waves.h"
+
+
 
 #pragma pack(push, 1)
 
@@ -211,7 +213,7 @@ struct BMP {
 		}
 	}
 	
-	void fill_wave(Waves wave, int t, BMP canonic)
+	void process_rows( Waves wave, int t, BMP canonic)
 	{
 		// utilities
 		uint32_t channels = bmp_info_header.bit_count / 8;
@@ -226,7 +228,6 @@ struct BMP {
 		double x_target = 0;
 		double y_target = 0;
 		double special = 0;
-
 		for (uint32_t y = 0; y < (uint32_t)bmp_info_header.height; ++y)
 		{
 			if (wave.get_alpha() == 180 || wave.get_alpha() == 360) y_star = 0;
@@ -236,13 +237,13 @@ struct BMP {
 			{
 				y_star = -1 * y_star;
 			}
-			x_star = wave.get_b() + 
+			x_star = wave.get_b() +
 				y_star
 				+ wave.get_V() * t * cos(wave.get_alpha() * 3.14159265 / 180.0);
 
 			for (uint32_t x = 0; x < (uint32_t)bmp_info_header.width; ++x)
 			{
-			 
+
 				x_target = x;
 				y_target = y;
 
@@ -252,7 +253,7 @@ struct BMP {
 					if (y - special > 0 &&
 						y - special < wave.get_lambda())
 					{
-						distortion = wave.get_amplitude() * (0.5 * (sin(y - special * 2 * 3.14159265 / wave.get_lambda()) + 1)); 
+						distortion = wave.get_amplitude() * (0.5 * (sin(y - special * 2 * 3.14159265 / wave.get_lambda()) + 1));
 						x_target = x + round(distortion * sin(wave.get_alpha() * 3.14159265 / 180.0));
 						y_target = y + round(distortion * cos(wave.get_alpha() * 3.14159265 / 180.0));
 					}
@@ -262,7 +263,7 @@ struct BMP {
 
 					if (x > x_star + delta && x < x_star)
 					{
-						distortion = wave.get_amplitude() * (0.5 * (sin((x - x_star) * 2 * 3.14159265 / delta) + 1)); 
+						distortion = wave.get_amplitude() * (0.5 * (sin((x - x_star) * 2 * 3.14159265 / delta) + 1));
 						x_target = x + round(distortion * sin(wave.get_alpha() * 3.14159265 / 180.0));
 						y_target = y + round(distortion * cos(wave.get_alpha() * 3.14159265 / 180.0));
 					}
@@ -277,9 +278,9 @@ struct BMP {
 				res1 = canonic.data[channels * (y_target * bmp_info_header.width + x_target) + 1];
 				res2 = canonic.data[channels * (y_target * bmp_info_header.width + x_target) + 2];
 
-				data[channels * (y * bmp_info_header.width + x) + 0] = res0; 
-				data[channels * (y * bmp_info_header.width + x) + 1] = res1; 
-				data[channels * (y * bmp_info_header.width + x) + 2] = res2; 
+				data[channels * (y * bmp_info_header.width + x) + 0] = res0;
+				data[channels * (y * bmp_info_header.width + x) + 1] = res1;
+				data[channels * (y * bmp_info_header.width + x) + 2] = res2;
 				if (channels == 4)
 				{
 					res3 = canonic.data[channels * (y_target * canonic.bmp_info_header.width + x_target) + 3];
@@ -288,7 +289,6 @@ struct BMP {
 
 			}
 		}
-
 	}
 
 	void copy(BMP canonic)
