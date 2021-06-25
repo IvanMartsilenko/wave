@@ -1,0 +1,11 @@
+The time: 4285 seconds * clocs_per_sec
+Image: sample_1.bmp
+Wave settings: 
+
+	alpha: 360
+	V: 40
+	T: 5
+	amplitude(n): 30
+	length: 200
+	X_start: 0
+	Y_start: 0
