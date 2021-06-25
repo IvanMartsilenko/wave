@@ -18,13 +18,22 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
 {
+	BMP canonic = BMP("sample_1.bmp");
+	int alpha = 45;
+	double n = 30.0; // amplitude
+	double v = 40;  // speed
+	double l = 200; // wave length ( distortion zone width)
+
+	Waves wave = Waves(canonic.bmp_info_header.height, canonic.bmp_info_header.width, alpha, n, v, l);
+
+
+
 	clock_t start = clock();
 	double seconds = -1;
 	//initializating
-	BMP canonic = BMP("sample_1.bmp");
+	
 	const char* filename = "wave.bmp";
 	BMP bmp = BMP(canonic.bmp_info_header.width, canonic.bmp_info_header.height, canonic.bmp_info_header.bit_count == 32);
-	Waves wave = Waves(bmp.bmp_info_header.height, bmp.bmp_info_header.width, 360, 30.0, 40.0, 200);
 	canonic.write(filename);
 
 	GdiplusStartupInput gdiplusStartupInput;

@@ -20,13 +20,13 @@ class Waves {
 		int width;
 	public:
 		Waves(int h, int w);
-		Waves(int h, int w,int a);
-		Waves(int h, int w,int a, double n);
-		Waves(int h, int w,int a, double n, double v);
-		Waves(int h, int w,int a, double n, double v, double l);
-		Waves(int h, int w,double n);
-		Waves(int h, int w,double n, double v);
-		Waves(int h, int w,double n, double v, double l);
+		Waves(int h, int w, int a);
+		Waves(int h, int w, int a, double n);
+		Waves(int h, int w, int a, double n, double v);
+		Waves(int h, int w, int a, double n, double v, double l);
+		Waves(int h, int w, double n);
+		Waves(int h, int w, double n, double v);
+		Waves(int h, int w, double n, double v, double l);
 
 		int get_alpha();
 		int get_X_start();
