@@ -161,6 +161,10 @@
     <ClCompile Include="Samsung.cpp" />
     <ClCompile Include="Waves.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="sample_1.bmp" />
+    <Image Include="this_is_fine.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

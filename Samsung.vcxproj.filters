@@ -39,4 +39,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="sample_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="this_is_fine.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

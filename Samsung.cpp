@@ -18,7 +18,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
 {
-	BMP canonic = BMP("sample_1.bmp");
+	BMP canonic = BMP("this_is_fine.bmp");
 	int alpha = 45;
 	double n = 30.0; // amplitude
 	double v = 40;  // speed
