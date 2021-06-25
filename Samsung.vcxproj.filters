@@ -47,4 +47,12 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DocumentationTestTask.docx">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ReadMe.docx">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
